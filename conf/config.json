@@ -1,0 +1,9 @@
+{
+  "database": {
+    "host": "106.12.14.102",
+    "user": "mysql",
+    "password": "binave",
+    "port": 3306,
+    "database": "question"
+  }
+}

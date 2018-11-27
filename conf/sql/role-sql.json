@@ -1,0 +1,3 @@
+{
+  "findByIds": "select * from sys_role where id in (?)"
+}

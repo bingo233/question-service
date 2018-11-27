@@ -1,0 +1,3 @@
+{
+  "findByAccAndPwd": "select * from sys_user where acc=? and pwd=?"
+} 
