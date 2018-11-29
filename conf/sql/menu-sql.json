@@ -1,3 +1,4 @@
 {
-  "findByIds": "select * from sys_menu where id in (?)"
+  "findByIds": "select * from sys_menu where id in (?)",
+  "queryAll": "select * from sys_menu"
 } 

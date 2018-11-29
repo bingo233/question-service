@@ -9,7 +9,7 @@ const app = express();
 const routers = require('./routes/index');
 const login = require('./routes/login');
 const menus = require('./routes/menus');
-
+const uplaod = require('./routes/upload')
 
 app.all('*', function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -48,13 +48,14 @@ app.use(session({
 app.use('/',routers);
 app.use('/login', login);
 app.use('/menus', menus);
+app.use('/upload', uplaod);
 
 // 把请求参数格式化为json
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 // 静态资源控制
-//app.use(express.static(__dirname+'/public'))
+app.use(express.static(__dirname+'/public'))
 
 const server = app.listen(3000 , () => {
 	const host = server.address().address;

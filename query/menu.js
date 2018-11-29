@@ -19,6 +19,11 @@ module.exports = {
 			});
 
 		});
-		
+	},
+
+	getMenus(callback) {
+		queryUtils(['menu-sql', 'queryAll']).then(res => {
+			callback(res)
+		})
 	}
 };

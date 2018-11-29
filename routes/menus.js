@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const roleSql = require('../query/menu');
+const menuQuery = require('../query/menu');
 const msg = require('../utils/msg');
-
-router.get('/getMenus', ({session}, res) => {
+router.get('/getUserMenus', ({session}, res) => {
 	// res.json("req")
 	const user = session.user;
 	
@@ -14,9 +13,15 @@ router.get('/getMenus', ({session}, res) => {
 	}else {
 		userRoles = userRoles.split(';');
 	}
-	roleSql.getMenusByUser(userRoles, function(rows) {
+	menuQuery.getMenusByUser(userRoles, function(rows) {
 		return res.json(msg.ok('查询成功', null, rows));
 	});
 });
+
+router.get('/getMenus',(req,res) => {
+	menuQuery.getMenus(rows => {
+		return res.json(msg.ok('查询成功', null, rows));
+	})
+})
 
 module.exports = router;
