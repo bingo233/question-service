@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "supervisor ./server.js",
+    "dev": "node ./server.js",
     "pro": "node ./server.js"
   },
   "author": "",
