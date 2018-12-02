@@ -1,4 +1,6 @@
 {
   "findByIds": "select * from sys_menu where id in (?)",
-  "queryAll": "select * from sys_menu"
+  "queryAll": "select * from sys_menu",
+  "saveMenu": "insert into sys_menu set ?",
+  "updateMenu": "update sys_menu set ? where ?"
 } 

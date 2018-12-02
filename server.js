@@ -35,15 +35,16 @@ app.use(session({
 
 // =====登录拦截====== //
 //登录拦截器，必须放在静态资源声明之后、路由导航之前
-// app.use(function (req, res, next) {
-// 	var url = req.originalUrl;
-// 	url = url.split('?')[0];
-// 	// console.log(req.session);
-// 	if (url != '/login/loginCheck' && !req.session.user) {
-// 		return res.json(msg.logonFailure());
-// 	}
-// 	next();
-// });
+app.use(function (req, res, next) {
+	var url = req.originalUrl;
+	url = url.split('?')[0];
+    debugger
+	console.log(req.session);
+	if (url != '/login/loginCheck' && !req.session.user) {
+		return res.json(msg.logonFailure());
+	}
+	next();
+});
 
 app.use('/',routers);
 app.use('/login', login);

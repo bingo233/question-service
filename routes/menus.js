@@ -24,4 +24,19 @@ router.get('/getMenus',(req,res) => {
 	})
 })
 
+router.get('/saveMenu', ({query, session}, res) => {
+	query.modi_time = new Date();
+    query.modifer = session.user.id;
+    query.modi_name = session.user.name;
+
+	if (!query.id) {
+		query.creat_time = new Date();
+		query.creater = session.user.id;
+		query.modi_name = session.user.name;
+	}
+	menuQuery.saveMenus(query, rows => {
+		return res.json(msg.ok('保存成功', null ,rows ))
+	})
+})
+
 module.exports = router;
