@@ -6,7 +6,9 @@ module.exports = {
 			callback(res[0]);
 		});
 	},
-	queryUserByPage(aram, callback) {
-	
+	queryUserByPage(param, callback) {
+        getUserList(['user-sql', 'getUserList'],param).then(res => {
+        	callback(res)
+		})
 	}
 };

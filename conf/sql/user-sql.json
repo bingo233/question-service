@@ -1,3 +1,4 @@
 {
-  "findByAccAndPwd": "select * from sys_user where acc=? and pwd=?"
+  "findByAccAndPwd": "select * from sys_user where acc=? and pwd=?",
+  "getUserList": "select * from sys_user where ? LIMIT ?"
 } 
