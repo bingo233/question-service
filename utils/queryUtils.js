@@ -23,6 +23,9 @@ module.exports = function query([fileName,key], param = {}) {
 			} else {
 				console.log(param,'===sql查询参数');
 				// 查询数据库
+				console.log('----------------------------------')
+				console.log(sql,param)
+				console.log('----------------------------------')
 				var ss = connection.query( sql, param, function(err, rows){
 					console.log(ss.sql);
 					if (err) {

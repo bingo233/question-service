@@ -26,8 +26,8 @@ router.get('/getMenus',(req,res) => {
 
 router.get('/saveMenu', ({query, session}, res) => {
 	query.modi_time = new Date();
-    query.modifer = session.user.id;
-    query.modi_name = session.user.name;
+	query.modifer = session.user.id;
+	query.modi_name = session.user.name;
 
 	if (!query.id) {
 		query.creat_time = new Date();
@@ -36,6 +36,15 @@ router.get('/saveMenu', ({query, session}, res) => {
 	}
 	menuQuery.saveMenus(query, rows => {
 		return res.json(msg.ok('保存成功', null ,rows ))
+	})
+})
+
+router.get('/deleteMenu',({query:{id}},res) => {
+	if (!id) {
+		return res.json(msg.err('参数错误'))
+	}
+	menuQuery.deleteMenu([id], rows => {
+		return res.json(msg.ok('删除成功',null ,rows))
 	})
 })
 

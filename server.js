@@ -27,7 +27,7 @@ const menus = require('./routes/menus');
 const uplaod = require('./routes/upload')
 
 app.all('*', function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Origin', 'http://localhost:8888');
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
 	res.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE,OPTIONS');
@@ -38,11 +38,12 @@ app.all('*', function(req, res, next) {
 
 // =====登录拦截====== //
 //登录拦截器，必须放在静态资源声明之后、路由导航之前
+const whiteList = ['/login/loginCheck','/upload/uploadSvg']
 app.use(function (req, res, next) {
 	var url = req.originalUrl;
 	url = url.split('?')[0];
-
-	if (url != '/login/loginCheck' && !req.session.user) {
+	
+	if (!whiteList.includes(url) && !req.session.user) {
 		return res.json(msg.logonFailure());
 	}
 	next();

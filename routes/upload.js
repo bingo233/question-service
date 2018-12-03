@@ -27,8 +27,12 @@ router.post('/uploadSvg',upload.single('file'), (req, res) => {
 });
 
 router.get('/getSvg', ({query:{id}},res) => {
-  let readData = fs.readFileSync('upload\\'+id);
-  res.send(readData)
+  if (fs.existsSync('upload\\'+id)) {
+    let readData = fs.readFileSync('upload\\'+id);
+    res.send(msg.ok('读取成功',null,readData.toString()))
+  }else{
+    res.send(msg.err("图标文件不存在请重新上传"))
+  }
 })
 
 module.exports = router;

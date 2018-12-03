@@ -41,5 +41,11 @@ module.exports = {
             })
 		}
 
+	},
+	// 根据id 删除菜单
+	deleteMenu(params, callback) {
+		queryUtils(['menu-sql', 'deleteMenu'], params).then(res => {
+			callback(res)
+		})
 	}
 };
