@@ -1,3 +1,4 @@
 {
-  "findByIds": "select * from sys_role where id in (?)"
+  "findByIds": "select * from sys_role where id in (?)",
+  "queryRoleList": "select * from sys_role where 1=1 and ? order by order_id"
 }

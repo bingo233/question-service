@@ -6,8 +6,7 @@ router.get('/getUserMenus', ({session}, res) => {
 	// res.json("req")
 	const user = session.user;
 	
-	// let userRoles = user.roles;
-	userRoles = '111';
+	let userRoles = user.roles;
 	if(!userRoles) {
 		userRoles = [];
 	}else {
@@ -25,14 +24,14 @@ router.get('/getMenus',(req,res) => {
 })
 
 router.get('/saveMenu', ({query, session}, res) => {
-	query.modi_time = new Date();
+	query.modify_time = new Date();
 	query.modifer = session.user.id;
-	query.modi_name = session.user.name;
+	query.modify_name = session.user.name;
 
 	if (!query.id) {
-		query.creat_time = new Date();
+		query.create_time = new Date();
 		query.creater = session.user.id;
-		query.modi_name = session.user.name;
+		query.modify_name = session.user.name;
 	}
 	menuQuery.saveMenus(query, rows => {
 		return res.json(msg.ok('保存成功', null ,rows ))

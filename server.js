@@ -25,6 +25,7 @@ const routers = require('./routes/index');
 const login = require('./routes/login');
 const menus = require('./routes/menus');
 const uplaod = require('./routes/upload')
+const role = require('./routes/role')
 
 app.all('*', function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', 'http://localhost:8888');
@@ -53,6 +54,7 @@ app.use('/',routers);
 app.use('/login', login);
 app.use('/menus', menus);
 app.use('/upload', uplaod);
+app.use('/role', role);
 
 // 把请求参数格式化为json
 app.use(bodyParser.urlencoded({extended : true}));
