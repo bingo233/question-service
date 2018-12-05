@@ -1,0 +1,7 @@
+{
+  "queryAll": "select * from sys_data order by order_id asc",
+  "queryData": "select * from sys_data where ?",
+  "deleteById": "delete from sys_data where id = ?",
+  "saveData": "insert into sys_data set ?",
+  "updateData": "update sys_data set ? where id = ?"
+}
